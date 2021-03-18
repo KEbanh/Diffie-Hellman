@@ -1,0 +1,89 @@
+<html><head>
+		<title>Diffie Hellman</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script>
+			"use strict";
+			function fDiffieHellman() {
+				// Quellcode
+	
+
+			var vp;
+			var vg;
+			var va;
+			var vb;
+			var vgA;
+			var vgB;
+			var vKa;
+			var vKb;
+			var vAusgabe="";
+			
+			 //Eingabe
+			vp = document.getElementById("p").value;
+			vg = document.getElementById("g").value;
+			va = document.getElementById("a").value;
+			vb = document.getElementById("b").value;
+			
+			// Verzweigung 
+			if(vp>99){
+
+			vAusgabe=vAusgabe + "Bitte wähle eine Primzahl p kleiner als 100";
+
+			}
+			
+			else {
+
+			//Verarbeitung
+			vgA = Math.pow(vg, va) % vp;
+			
+			vgB = Math.pow(vg, vb) % vp;
+			
+			vKa = Math.pow(vgA, vb) % vp;
+			vKb = Math.pow(vgB, va) % vp;
+			
+			
+			// Wenn du die Hochzahl darstellen willst, dann setze einen Punkt
+			
+			
+			
+			 //Ausgabe
+			
+			vAusgabe=vAusgabe + "Alice berechnet A: " + vgA + "</br>";
+			vAusgabe=vAusgabe + "Bob berechnet B: " + vgB + "</br>";
+			vAusgabe=vAusgabe + "-------------------------------------------</br>";
+			vAusgabe=vAusgabe + "Generierter Schlüssel K Alice: " + vKa+ "</br>";
+			vAusgabe=vAusgabe + "Generierter Schlüssel K Bob: " + vKb +"</br>";
+
+			}
+			
+			document.getElementById("idAusgabe").innerHTML = vAusgabe;
+			
+			}
+			
+			
+			
+		</script>
+	</head>
+
+	<body>	<br>
+	
+		<h1>Berechnung vom Schlüssel K nach Diffie-Hellman</h1>
+		
+		1. Alice und Bob einigen sich auf:<br>
+		g = <input id="g" value="2" size="3"><br>
+		p = <input id="p" value="13" size="3"type=""><br> 
+		<p>-------------------------------------------------</p>
+		2. Alice wählt die Geheime Zahl a: <br>
+		a = <input id="a" value="5" size="3" type=""><br>
+		3. Bob wählt die Geheime Zahl b: <br>
+		b = <input id="b" value="8" size="3" type=""><br>
+		</br>
+	<button onclick="fDiffieHellman();">Berechne Schlüssel K!</button></br>
+		</br>
+		<div id="idAusgabe" ></div></br>
+		<br>
+	
+	<br>
+	<br>
+		   
+	
+</body></html>
